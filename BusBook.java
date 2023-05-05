@@ -41,7 +41,7 @@ class Bus implements BusInterface{
         System.out.println("Enter your age: ");
         this.age = scn.nextInt();
 
-        System.out.println("Enter your boarding point");
+        System.out.println("Enter your boarding point: ");
         this.source = scn.nextLine();
 
         System.out.println("Enter your destination: ");
@@ -58,10 +58,15 @@ class Bus implements BusInterface{
         choice = scn.nextInt();
         if (choice<1 || choice > buses.size()){
             System.out.println("enter a valid choice");
+            selectBus();
         }else{
             validChoice = true;
             if(choice==1){
                 this.selectedBus = "Bus 1";
+            }else if (choice ==2 ){
+                this.selectedBus = "Bus 2";
+            }else if (choice == 3){
+                this.selectedBus = "Bus 3";
             }
         }
         }
@@ -74,6 +79,22 @@ class Bus implements BusInterface{
 
 public class BusBook {
 
+    public static void main(String[] args) {
 
+        int choice;
+        do{
+        Bus bus = new Bus();
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("Welcome to Green Bus");
+        bus.getDetails();
+        bus.selectBus();
+        bus.viewTicket();
+        System.out.println("1) Book another ticket \n 2) Exit");
+         choice = scn.nextInt();
+        }
+        while(choice == 1);
+        
+    }
     
 }
