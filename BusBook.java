@@ -1,6 +1,7 @@
-import java.sql.Date;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Date;
 import java.util.Scanner;
 
 interface BusInterface{
@@ -46,6 +47,7 @@ class Bus implements BusInterface{
 
         System.out.println("Enter your destination: ");
         this.destination = scn.nextLine();
+        getDate();
     }
     
     public void selectBus(){
@@ -73,7 +75,15 @@ class Bus implements BusInterface{
         
     }
     public void getDate(){
-
+        System.out.println("Enter date for travel (dd/mm/yyyy)");
+                
+                try{
+                    this.travelDate =  new Date(scn.next());
+                }
+                catch(Exception e){
+                    System.out.println("Enter date in proper format");
+                    return;
+                }
     }
 }
 
