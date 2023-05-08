@@ -1,6 +1,8 @@
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -9,6 +11,12 @@ interface BusInterface{
     public void viewTicket();
     public void getDetails();
     public void getDate();
+    List<Integer> busFare = new ArrayList<>();
+    List<String> busName = new ArrayList<>();
+
+    
+
+
     Map<String, Integer> buses = new HashMap<>(){{
         put("1) Bus 1", 200);
         put("2) Bus 2", 250);
@@ -26,11 +34,18 @@ class Bus implements BusInterface{
     Date travelDate;
     Scanner scn=new Scanner(System.in);
 
+    
+
     public void showBuses(){
         System.out.println("Available buses");
-        for(String bus: buses.keySet()){
-            System.out.println(bus + " : "+buses.get(bus));
-        }
+
+        busName.forEach((bus)->System.out.println(bus));
+        System.out.println();
+        busFare.forEach((bp)->System.out.println(bp));
+
+        // for(String bus: buses.keySet()){
+        //     System.out.println(bus + " : "+buses.get(bus));
+        // }
     }
     public void viewTicket(){
         System.out.println(this.name+"\n"+ this.age+"\n"+this.source+"\n"+this.destination+"\n"+this.selectedBus+"\n"+this.travelDate);
@@ -51,6 +66,13 @@ class Bus implements BusInterface{
     }
     
     public void selectBus(){
+        busName.add("Bus 1");
+        busName.add("Bus 2");
+        busName.add("Bus 3");
+
+        busFare.add(200);
+        busFare.add(300);
+        busFare.add(400);
 
         int choice = -1;
         boolean validChoice = false;
@@ -90,7 +112,7 @@ class Bus implements BusInterface{
 public class BusBook {
 
     public static void main(String[] args) {
-
+        
         int choice;
         do{
         Bus bus = new Bus();
